@@ -1,5 +1,6 @@
 const express = require('express');
 const fs = require('fs');
+const path = require('path');
 const sqlite = require('sql.js');
 
 const filebuffer = fs.readFileSync('db/tastin.sqlite3');
@@ -11,9 +12,13 @@ const app = express();
 app.set('port', (process.env.PORT || 3001));
 
 // Express only serves static assets in production
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('client/build'));
-}
+//if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('front/build'));
+
+  app.get('/app/*', function (req, res) {
+    res.sendFile(path.join(__dirname, '../front/build', 'index.html'));
+  });
+//}
 
 const COLUMNS = [
   'carbohydrate_g',
@@ -25,7 +30,7 @@ const COLUMNS = [
   'description',
 ];
 app.get('/api/food', (req, res) => {
-
+  res.send('asdf');
 });
 
 app.listen(app.get('port'), () => {
