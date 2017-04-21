@@ -11,6 +11,8 @@ const filebuffer = fs.readFileSync('db/tastin.sqlite3');
 
 //const db = new sqlite.Database(filebuffer);
 
+require('./controllers/restaurants');
+
 const app = express();
 
 /*app.use(function(req, res, next) {
