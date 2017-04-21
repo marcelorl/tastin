@@ -2,32 +2,35 @@
   "name": "tastin-back",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "start": "npm-run-all --parallel server client",
-    "server": "babel-node index.js",
-    "client": "babel-node start-client.js",
+    "start": "node ./index.js",
+    "server": "nodemon ./index.js",
     "lint": "standard \"src/**/*.js\""
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/marcelorl/tastin.git"
   },
-  "author": "",
+  "author": "marcelorl",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/marcelorl/tastin/issues"
   },
   "homepage": "https://github.com/marcelorl/tastin#readme",
   "devDependencies": {
+    "nodemon": "^1.11.0",
     "standard": "^10.0.2"
   },
   "dependencies": {
-    "babel-cli": "^6.24.1",
-    "babel-core": "^6.24.1",
+    "compression": "^1.6.2",
+    "cors": "^2.8.3",
+    "debug": "^2.6.4",
+    "dotenv-safe": "^4.0.3",
     "express": "^4.15.2",
+    "express-jwt": "^5.3.0",
     "fs": "^0.0.1-security",
-    "npm-run-all": "^4.0.2",
+    "jwks-rsa": "^1.1.1",
     "path": "^0.12.7",
     "sql.js": "^0.4.0"
   }
