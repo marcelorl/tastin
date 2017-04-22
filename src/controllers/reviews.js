@@ -9,3 +9,15 @@ exports.create = (req, res) =>
   }).then(response => {
     res.json(response);
   });
+
+exports.findReviews = (req, res) =>
+  models.Review.findAll({
+    where: {
+      place_id: req.params.place_id
+    }
+  })
+    .then(review => {
+      if(review.length) {
+        res.json(review);
+      }
+    });

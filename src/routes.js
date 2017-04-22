@@ -8,9 +8,10 @@ const router = express.Router();
 //router.use(auth);
 
 // Restaurants
-router.get('/restaurant', controllerRestaurants.search);
+router.get('/restaurants', controllerRestaurants.search);
+router.get('/restaurants/:place_id/reviews', controllerReviews.findReviews);
 
 // Reviews
-router.post('/review', controllerReviews.create);
+router.post('/reviews', controllerReviews.create);
 
 module.exports = router;
