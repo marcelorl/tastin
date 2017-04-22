@@ -2,14 +2,11 @@ const express = require('express');
 const logger = require('debug')('express');
 const fs = require('fs');
 const path = require('path');
-//const sqlite = require('sql.js');
 const compression = require('compression');
 const cors = require('cors');
+const bodyParser = require('body-parser');
 
 const router = require('./routes');
-const filebuffer = fs.readFileSync('db/tastin.sqlite3');
-
-//const db = new sqlite.Database(filebuffer);
 
 require('./controllers/restaurants');
 
@@ -22,10 +19,12 @@ const app = express();
 });*/
 
 app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/api', router);
 app.use(compression());
 
-if(process.env.ENV !== 'development') {
+if(process.env.NODE_ENV === 'production') {
   app.use((err, req, res, next) => {
     logger(err.name, err.message);
     res.json({
