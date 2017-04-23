@@ -18,6 +18,8 @@ exports.findReviews = (req, res) =>
   })
     .then(review => {
       if(review.length) {
-        res.json(review);
+        return res.json(review);
       }
+
+      return res.json([]);
     });
