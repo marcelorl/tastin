@@ -1,0 +1,146 @@
+swagger: '2.0'
+info:
+  description: Tastin API
+  version: 1.0.0
+  title: Tastin
+host: 'localhost:3001'
+basePath: /api
+tags:
+  - name: restaurants
+    description: restaurants
+  - name: reviews
+    description: restaurant's reviews
+schemes:
+  - http
+paths:
+  /restaurants:
+    get:
+      tags:
+        - restaurants
+      summary: Search for restaurants around the user
+      description: >-
+        Latitute and longitude must be specified in order to find the
+        restaurants around it.
+      operationId: search
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: lat
+          in: query
+          description: latitude
+          required: true
+          type: string
+        - name: lng
+          in: query
+          description: longitude
+          required: true
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Restaurant'
+        '400':
+          description: Invalid status value
+  '/restaurants/{place_id}/reviews':
+    get:
+      tags:
+        - restaurants
+      summary: Find reviews by restaurant ID
+      description: Returns all reviews from restaurant ID
+      operationId: findReviews
+      produces:
+        - application/json
+      parameters:
+        - name: place_id
+          in: path
+          description: Restaurant ID
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/Review'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Pet not found
+  /reviews:
+    post:
+      tags:
+        - reviews
+      summary: Create a review for a specific restaurant
+      description: ''
+      operationId: create
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: Review object that needs to be added to the restaurant
+          required: true
+          schema:
+            $ref: '#/definitions/Review'
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/Review'
+        '400':
+          description: Invalid ID supplied
+definitions:
+  Review:
+    type: object
+    required:
+      - user_name
+      - user_email
+      - place_id
+      - message
+    properties:
+      place_id:
+        type: integer
+        format: int64
+      user_name:
+        type: string
+        example: test
+      user_email:
+        type: string
+        example: test@test.com
+      message:
+        type: string
+        example: This is a review
+  Restaurant:
+    type: object
+    properties:
+      place_id:
+        type: integer
+        format: int64
+      name:
+        type: string
+        example: Restaurant test
+      rating:
+        type: string
+        example: '3.5'
+      vicinity:
+        type: string
+        example: Av Paulista
+      location:
+        type: object
+        properties:
+          lat:
+            type: string
+            example: '33.342342'
+          lng:
+            type: string
+            example: '33.342342'
+      open_now:
+        type: string
+        example: true

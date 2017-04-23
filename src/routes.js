@@ -3,15 +3,13 @@ const auth = require('./middlewares/auth');
 const controllerRestaurants = require('./controllers/restaurants');
 const controllerReviews = require('./controllers/reviews');
 
-const router = express.Router();
-
-//router.use(auth);
+const routes = express.Router();
 
 // Restaurants
-router.get('/restaurants', controllerRestaurants.search);
-router.get('/restaurants/:place_id/reviews', controllerReviews.findReviews);
+routes.get('/restaurants', controllerRestaurants.search);
+routes.get('/restaurants/:place_id/reviews', controllerReviews.findReviews);
 
 // Reviews
-router.post('/reviews', controllerReviews.create);
+routes.post('/reviews', controllerReviews.create);
 
-module.exports = router;
+module.exports = routes;

@@ -1,12 +1,20 @@
 const axios = require('../utils/Request');
+const get = require('lodash/get');
 const pick = require('lodash/pick');
 
 exports.search = (req, res) => {
+  const location = `${req.query.lat},${req.query.lng}`;
+
   const searchRestaurants = response => {
     const fullRestaurantsDetails = response.data.results;
 
     let restaurants = fullRestaurantsDetails.map(location => {
-      return pick(location, ['place_id', 'name', 'rating', 'vicinity', 'geometry.location', 'opening_hours.open_now']);
+      let extractLocation = pick(location, ['place_id', 'name', 'rating', 'vicinity']);
+
+      return Object.assign(extractLocation, {
+        location: location.geometry.location,
+        open_now: get(location, 'opening_hours.open_now', false)
+      });
     });
 
     res.json(restaurants);
@@ -16,10 +24,9 @@ exports.search = (req, res) => {
     '/place/nearbysearch/json',
     {
       params: {
-        location:'-33.8670522,151.1957362',
-        radius: 500,
-        type: 'restaurant',
-        keyword: 'cruise'
+        location,
+        radius: req.query.radius || 500,
+        type: 'restaurant'
       }
     }
   )

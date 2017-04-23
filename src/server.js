@@ -6,9 +6,10 @@ const compression = require('compression');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
-const router = require('./routes');
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./doc/api.json');
 
-require('./controllers/restaurants');
+const routes = require('./routes');
 
 const app = express();
 
@@ -21,8 +22,12 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use('/api', router);
 app.use(compression());
+app.use('/api', routes);
+
+if(process.env.NODE_ENV === 'development') {
+  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+}
 
 if(process.env.NODE_ENV === 'production') {
   app.use((err, req, res, next) => {
