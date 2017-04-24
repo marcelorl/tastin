@@ -1,13 +1,14 @@
 # tastin
 
+### Overview
 API Backend application for Tastin client.
 
-##### It allows you to:
+### It allows you to:
   - Search for Restaurants around the current position of the client;
   - Search for Restaurant's Reviews; 
   - Create review for restaurants.
   
-##### Technologies:
+### Technologies:
   - Express server
   - Sequelize ORM
     - SQlite (dev)
@@ -15,15 +16,17 @@ API Backend application for Tastin client.
   - Swagger (dev)
   - Semi-standard lint
   
-##### API documentation
+### API documentation
   It is allowed only in development environment:
     - Access http://localhost:3001/api-docs/ to reach it.
   
-##### Commands:
-  - Installation:
+### Commands:
+  #### Installation:
+    - cp .env.example .env
     - yarn
     - yarn migrate
-  - Development:
+  #### Development:
     - yarn server
     - yarn lint
-  - Deploy
+  #### Deploy
+    - Comming soon ...
