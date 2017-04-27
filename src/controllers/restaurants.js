@@ -8,7 +8,7 @@ exports.search = (req, res) => {
   const searchRestaurants = response => {
     const fullRestaurantsDetails = response.data.results;
 
-    let restaurants = fullRestaurantsDetails.map(location => {
+    const restaurants = fullRestaurantsDetails.map(location => {
       let extractLocation = pick(location, ['place_id', 'name', 'rating', 'vicinity']);
 
       return Object.assign(extractLocation, {

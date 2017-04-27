@@ -1,3 +1,4 @@
+require('dotenv-safe').config();
 const axios = require('axios');
 
 const instance = axios.create({
