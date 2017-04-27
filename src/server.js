@@ -1,7 +1,5 @@
 const express = require('express');
 const logger = require('debug')('express');
-const fs = require('fs');
-const path = require('path');
 const compression = require('compression');
 const cors = require('cors');
 const bodyParser = require('body-parser');
@@ -13,11 +11,13 @@ const routes = require('./routes');
 
 const app = express();
 
-/*app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});*/
+/**
+ * app.use(function(req, res, next) {
+ *    res.header("Access-Control-Allow-Origin", "*");
+ *    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+ *    next();
+ * });
+ */
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -25,11 +25,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(compression());
 app.use('/api', routes);
 
-if(process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === 'development') {
   app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 }
 
-if(process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'production') {
   app.use((err, req, res, next) => {
     logger(err.name, err.message);
     res.json({

@@ -17,7 +17,7 @@ exports.findReviews = (req, res) =>
     }
   })
     .then(review => {
-      if(review.length) {
+      if (review.length) {
         return res.json(review);
       }
 

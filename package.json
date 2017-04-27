@@ -7,10 +7,10 @@
     "node": "7.9.0"
   },
   "scripts": {
-    "prestart": "npm run migrate",
+    "postinstall": "npm run migrate",
     "start": "node ./index.js",
     "server": "nodemon ./index.js",
-    "lint": "standard \"src/**/*.js\"",
+    "lint": "semistandard \"src/**/*.js\" --verbose | snazzy",
     "migrate": "sequelize db:migrate"
   },
   "repository": {
@@ -25,7 +25,8 @@
   "homepage": "https://github.com/marcelorl/tastin#readme",
   "devDependencies": {
     "nodemon": "^1.11.0",
-    "standard": "^10.0.2"
+    "semistandard": "*",
+    "snazzy": "^7.0.0"
   },
   "dependencies": {
     "axios": "^0.16.1",

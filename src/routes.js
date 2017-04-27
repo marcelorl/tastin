@@ -1,7 +1,7 @@
 const express = require('express');
-const auth = require('./middlewares/auth');
 const controllerRestaurants = require('./controllers/restaurants');
 const controllerReviews = require('./controllers/reviews');
+// const auth = require('./middlewares/auth');
 
 const routes = express.Router();
 
