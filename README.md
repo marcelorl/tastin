@@ -19,16 +19,15 @@ API Backend application for Tastin client.
   - Semi-standard lint
   
 ### API documentation
-  It is allowed only in development environment:
-    - Access http://localhost:3001/api-docs/ to reach it.
+    http://localhost:3001/api-docs.
   
 ### Commands:
   #### Installation:
-    - cp .env.example .env
-    - yarn
-    - yarn migrate
+    cp .env.example .env
+    yarn
+    yarn migrate
   #### Development:
-    - yarn server
-    - yarn lint
+    yarn server
+    yarn lint
   #### Deploy
-    - Comming soon ...
+    Comming soon ...

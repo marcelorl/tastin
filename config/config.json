@@ -8,10 +8,6 @@
     "storage": ":memory:"
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "tastin_db",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "use_env_variable": "CLEARDB_DATABASE_URL"
   }
 }

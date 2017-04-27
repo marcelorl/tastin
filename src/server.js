@@ -25,9 +25,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(compression());
 app.use('/api', routes);
 
-if (process.env.NODE_ENV === 'development') {
-  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-}
+// Swagger
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 if (process.env.NODE_ENV === 'production') {
   app.use((err, req, res, next) => {
