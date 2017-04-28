@@ -19,7 +19,7 @@ API Backend application for Tastin client.
   - Semi-standard lint
   
 ### API documentation
-    http://localhost:3001/api-docs.
+    http://localhost:3001/api/docs.
   
 ### Commands:
   #### Installation:

@@ -1,3 +1,3 @@
-[submodule "front"]
-	path = front
+[submodule "tastin-front"]
+	path = tastin-front
 	url = https://github.com/marcelorl/tastin-front.git
