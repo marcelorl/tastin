@@ -8,7 +8,6 @@
   },
   "scripts": {
     "postinstall": "npm run migrate",
-    "prestart": "cd front && yarn && yarn build",
     "start": "node ./index.js",
     "server": "nodemon ./index.js",
     "lint": "semistandard \"src/**/*.js\" --verbose | snazzy",
