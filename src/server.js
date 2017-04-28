@@ -2,6 +2,7 @@ const express = require('express');
 const logger = require('debug')('express');
 const compression = require('compression');
 const cors = require('cors');
+const path = require('path');
 const bodyParser = require('body-parser');
 
 const swaggerUi = require('swagger-ui-express');
@@ -24,7 +25,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(compression());
 
-app.use('/', express.static('../build'));
+app.use('/', express.static(path.resolve(__dirname, '../build')));
 
 app.use('/api', routes);
 
