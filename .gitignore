@@ -1,5 +1,5 @@
 .idea
-db
+db/*.sqlite
 node_modules
 .env
 *.sqlite

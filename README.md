@@ -30,4 +30,7 @@ API Backend application for Tastin client.
     yarn server
     yarn lint
   #### Deploy
-    Comming soon ...
+    Install heroku cli:
+      - https://devcenter.heroku.com/articles/heroku-cli
+    Whenever any changes are made, push them normally, then:
+      git push heroku master
