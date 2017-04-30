@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === undefined) {
   require('dotenv-safe').config();
 }
 
