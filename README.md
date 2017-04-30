@@ -26,11 +26,25 @@ API Backend application for Tastin client.
     cp .env.example .env
     yarn
     yarn migrate
+    
   #### Development:
     yarn server
     yarn lint
+    
+  #### CI:
+    Comming soon ...
+    
   #### Deploy
-    Install heroku cli:
-      - https://devcenter.heroku.com/articles/heroku-cli
-    Whenever any changes are made, push them normally, then:
-      git push heroku master
+  
+  Install heroku cli:
+    
+    https://devcenter.heroku.com/articles/heroku-cli
+    
+  Whenever any changes are made, push them normally, then:
+    
+    git push heroku master
+    
+  If changes were made in the front-end and pushed to its deploy branch, then:
+    
+    cd build && git pull origin deploy
+    git push heroku master
